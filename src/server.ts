@@ -2,6 +2,7 @@ import * as net from "net";
 import EventReceive from "./ServerEvent/EventReceive/EventReceive";
 import EventClose from "./ServerEvent/EventClose/EventClose";
 import EventError from "./ServerEvent/EventError/EventError";
+import colorlog from "./Module/colorlog/colorlog";
 
 export default class TCPServer {
     private _host: string;
@@ -35,13 +36,11 @@ export default class TCPServer {
     // サーバー処理を開始
     public start(): void {
         this._serverBody = net.createServer((sock: net.Socket) => { this.__onClientConnection(sock); });
-        this._serverBody.listen(this.PORT, this.HOST, () => {
-            console.log(`TCPサーバーを ${this.HOST}:${this.PORT} で起動しました。`);
-        });
+        this._serverBody.listen(this.PORT, this.HOST, () => { colorlog.log(`TCPサーバーを ${this.HOST}:${this.PORT} で起動しました。`); });
     }
 
     private __onClientConnection(sock: net.Socket): void {
-        console.log(`${sock.remoteAddress}:${sock.remotePort} が接続しました。`);
+        colorlog.success(`${sock.remoteAddress}:${sock.remotePort} が接続しました。`)
 
         // データを受け取った時の処理
         sock.on("data", (data) => { this._eventReceive.addEvent(sock, data); });

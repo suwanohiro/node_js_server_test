@@ -1,0 +1,21 @@
+{
+  "name": "node_js_server_test",
+  "version": "1.0.0",
+  "description": "Node.jsを使ったサーバー作成テスト",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --exec ts-node src/main.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.6",
+    "nodemon": "^3.0.3"
+  }
+}

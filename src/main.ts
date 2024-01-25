@@ -1,2 +1,4 @@
-console.log("hello node!");
-console.log("hello world!");
+import TCPServer from "./server";
+
+const server: TCPServer = new TCPServer("127.0.0.1", 3000);
+server.start();

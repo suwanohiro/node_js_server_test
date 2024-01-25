@@ -1,5 +1,6 @@
 import { Socket } from "net";
 import ServerEvent from "../ServerEvent";
+import colorlog from "../../Module/colorlog/colorlog";
 
 export default class EventError extends ServerEvent {
     constructor() {
@@ -13,6 +14,6 @@ export default class EventError extends ServerEvent {
 
         super.addEvent(sock);
 
-        console.error(`${sock.remoteAddress}:${sock.remotePort} 接続エラー： ${error}`);
+        colorlog.error(`${this.getClientAddress()} 接続エラー： ${error}`);
     }
 }
